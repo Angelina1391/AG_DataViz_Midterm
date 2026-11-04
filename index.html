@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invisible Histories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer:ital@0;1&family=IM+Fell+Great+Primer+SC&family=Inter:wght@400;600&family=Sunflower:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.css" rel="stylesheet">
+<link href="css/figma.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="nav z" aria-label="Site">
+  <button class="nb home" data-go="" aria-label="Home"><img src="img/home.svg" alt=""></button>
+  <button class="nb back" id="backBtn" aria-label="Back"><img src="img/nav-back.svg" alt=""></button>
+  <button class="nb map" data-go="map" aria-label="Map"><img src="img/nav-map.svg" alt=""></button>
+  <button class="nb info" data-go="info" aria-label="Info"><img src="img/nav-info.svg" alt=""></button>
+</nav>
+
+<!-- 01 Start -->
+<main id="v-start" class="view">
+  <div class="start z">
+    <img class="abs" src="img/hero.webp" alt="1873 bird's-eye lithograph of New York by George Schlegel" style="left:-13px;top:44px;width:1751px;height:1278px;object-fit:cover">
+    <img class="abs mult" src="img/tex4.webp" alt="" style="left:-122px;top:-40px;width:1969px;height:1362px;object-fit:cover;opacity:.4">
+    <div class="abs mult" style="left:-59px;top:77px;width:1844px;height:1245px;overflow:hidden;opacity:.5"><img src="img/tex3.webp" alt="" style="position:absolute;left:0;top:-1.58%;width:100%;height:101.59%"></div>
+    <img class="abs" src="img/ellipse.svg" alt="" style="left:-466.9px;top:-234px;width:2647.9px;height:1848.1px">
+    <div class="orn" style="left:37px"><img src="img/ornL.svg" alt=""></div>
+    <div class="orn" style="left:1650px"><img src="img/ornR.svg" alt=""></div>
+    <h1 class="title">Invisible Histories</h1>
+    <p class="sub">AN INTERACTIVE EXPLORATION OF NEW YORK CITY LANDMARKS</p>
+    <a class="down" href="#intro" aria-label="Scroll to introduction"><img src="img/arrow.svg" alt=""></a>
+    <div class="intro" id="intro">
+      <p>New York City is constantly changing and evolving. Buildings are both constructed and destroyed, honored and overlooked. Residents and visitors are surrounded by the symbols of the city, some being quite obvious while others are discreet.</p>
+      <p>But rarely do we consider the specific places and ideas that have shaped the city into what we experience today. Beneath the facades of familiar buildings and locations lie <b>invisible histories</b> which tell the stories of the growth of a city, and the unique lives of the people who utilized them.</p>
+      <p>This project presents a hand-picked selection of locations designated and preserved as New York City Landmarks by the Landmark Preservation Committee.</p>
+      <p>What can the landmarks of today reveal about the city’s past? Furthermore, what does the city feel is worth preserving and whose histories do we choose to remember?</p>
+      <p>Explore the map, select a landmark, and view them in a new light. Discover the invisible history embedded in these sites.</p>
+      <p><b>History is not what remains, it is what we choose to remember.</b></p>
+    </div>
+    <a class="btn" href="#map" style="left:731px;top:2549px;width:265px;height:48px;font-size:20px">Explore the Map</a>
+    <a class="btn" href="#info" style="left:661px;top:2708px;width:407px;height:65px">Learn More About the Project</a>
+  </div>
+</main>
+
+<!-- 02–15 Map (single Mapbox instance) -->
+<main id="v-map" class="view">
+  <div id="map" role="region" aria-label="Map of selected NYC landmarks"></div>
+  <div id="card" class="card z" hidden></div>
+  <section id="list" class="list z" aria-label="Landmark list">
+    <h2>Landmarks</h2>
+    <ol id="listItems"></ol>
+  </section>
+</main>
+
+<!-- Landmark detail pages (Pass 2) -->
+<main id="v-detail" class="view"><div id="detail" class="z"></div></main>
+
+<!-- 17 Info (Pass 2) -->
+<main id="v-info" class="view"><div class="z"><div id="infoBox"></div></div></main>
+
+<div id="warp" aria-hidden="true"></div>
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.js"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

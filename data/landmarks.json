@@ -1,0 +1,701 @@
+{
+ "home": {
+  "center": [
+   -73.95,
+   40.7
+  ],
+  "zoom": 9.6
+ },
+ "landmarks": [
+  {
+   "id": "aakawaxung",
+   "short": "Aakawaxung",
+   "name": "Aakawaxung Munahanung",
+   "lpcName": "Aakawaxung Munahanung (Island Protected from the Wind) Archaeological Site",
+   "borough": "Staten Island",
+   "address": "Conference House Park, 258 Satterlee Street",
+   "latitude": 40.5027368,
+   "longitude": -74.2519122,
+   "zoom": 16,
+   "category": "Individual Landmark",
+   "date": null,
+   "designationInfo": {
+    "lp": "LP-02648",
+    "designated": "2021-06-22"
+   },
+   "card": {
+    "w": 777,
+    "h": 568,
+    "border": true,
+    "photo": {
+     "src": "img/t-aaka.webp",
+     "crop": [
+      0,
+      -0.03,
+      100,
+      103.23
+     ]
+    },
+    "tint": "rgba(248,241,215,.5)",
+    "alt": "Shoreline beach at Conference House Park"
+   },
+   "color": "#93a07f",
+   "photos": [
+    {
+     "caption": "Aakawaxung Munahanung, LPC designation photograph (2021-06-23)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP2648_2021-06-23_009 1"
+    },
+    {
+     "caption": "Aakawaxung Munahanung, LPC designation photograph (2021-06-23)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP2648_2021-06-23_008 1"
+    },
+    {
+     "caption": "Aakawaxung Munahanung, LPC designation photograph (2021-06-23)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP2648_2021-06-23_006 1"
+    },
+    {
+     "caption": "Aakawaxung Munahanung, LPC designation photograph (2021-06-23)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP2648_2021-06-23_023 1"
+    },
+    {
+     "caption": "Aakawaxung Munahanung, LPC designation photograph (2021-06-23)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP2648_2021-06-23_010 1"
+    },
+    {
+     "caption": "Aakawaxung Munahanung",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "Art_P242 1"
+    }
+   ],
+   "imageCredits": [
+    "NYC Landmarks Preservation Commission",
+    "Source needed"
+   ],
+   "pageImages": {
+    "image 9": {
+     "caption": "Pitch pine–oak forest",
+     "credit": "New York Natural Heritage Program (photographer not identified)",
+     "url": "https://guides.nynhp.org/pitch-pine-oak-forest/",
+     "bg": true
+    },
+    "image 11": {
+     "caption": "Ivan Shishkin, Mast Tree Grove, 1898, oil on canvas",
+     "credit": "WikiArt",
+     "url": "https://www.wikiart.org/en/ivan-shishkin/mast-tree-grove-1898",
+     "bg": true
+    },
+    "oysters": {
+     "caption": "Oysters",
+     "credit": "Smithsonian Magazine",
+     "url": "https://www.smithsonianmag.com/smart-news/oysters-could-save-staten-island-next-hurricane-sandy-180957626/",
+     "bg": false
+    },
+    "image 12": {
+     "caption": "Olivella shell beads",
+     "credit": "American Museum of Natural History, via Stagecoach Inn Museum",
+     "url": "https://stagecoachinnmuseum.com/calendar/2019/4/9/dstretch-technology-uncovers-rock-art-ventura-co-archaeological-society",
+     "bg": false
+    },
+    "image 7": {
+     "caption": "Manatus Map (Manatvs gelegen op de Noort Rivier), 1639",
+     "credit": "Wikipedia, “History of New York City (1946–1977)”",
+     "url": "https://en.wikipedia.org/wiki/History_of_New_York_City_(1946%E2%80%931977)",
+     "bg": true
+    },
+    "image 14": {
+     "caption": "Indian deed to Lubbertus van Dincklage for the purchase of Staten Island, July 10, 1657 (part 1)",
+     "credit": "Wikimedia Commons",
+     "url": "https://commons.wikimedia.org/wiki/File:Indian_Deed_to_Lubbertus_van_Dincklage_to_Purchase_Staten_Island_July_10_1657_Part_1.jpg",
+     "bg": false
+    },
+    "image 15": {
+     "caption": "Bentley Manor, the “Old Billopp House,” Staten Island",
+     "credit": "Wyatt family tree (wyatttree.org)",
+     "url": "https://www.wyatttree.org/billopp-family.html",
+     "bg": false
+    },
+    "image 16": {
+     "caption": "Shell midden",
+     "credit": "The New York Times, Oct. 19, 2017 (photographer not identified)",
+     "url": "https://www.nytimes.com/2017/10/19/science/native-americans-shell-middens-maine.html",
+     "bg": false
+    }
+   }
+  },
+  {
+   "id": "croton",
+   "short": "Croton",
+   "name": "Old Croton Aqueduct Walk",
+   "lpcName": "Old Croton Aqueduct Walk (Scenic Landmark)",
+   "borough": "Bronx",
+   "address": "Aqueduct Avenue East, University Heights",
+   "latitude": 40.859,
+   "longitude": -73.9095,
+   "zoom": 15.5,
+   "category": "Scenic Landmark",
+   "date": null,
+   "designationInfo": {
+    "lp": "LP-02673",
+    "designated": "2024",
+    "note": "Scenic landmark; not in the Individual Landmark Sites dataset. Coordinates approximate the walk's midpoint."
+   },
+   "card": {
+    "w": 777,
+    "h": 519,
+    "photo": {
+     "src": "img/t-croton.webp"
+    },
+    "hist": {
+     "src": "img/t-croton-h.webp",
+     "fit": "fill",
+     "op": 0.86
+    },
+    "alt": "Tree-lined path of the Old Croton Aqueduct Walk"
+   },
+   "color": "#83c3bc",
+   "photos": [
+    {
+     "caption": "Old Croton Aqueduct Walk, LPC designation photograph (2024-04-09)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP2673_2024-04-09_073 1"
+    },
+    {
+     "caption": "Old Croton Aqueduct Walk",
+     "credit": "Flickr, photo ID 51131300001 (photographer unverified)",
+     "verified": true,
+     "file": "51131300001_d26a72ce1a_c 1"
+    },
+    {
+     "caption": "Old Croton Aqueduct Walk, LPC designation photograph (2024-04-09)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP2673_2024-04-09_070 1"
+    },
+    {
+     "caption": "Croton Aqueduct, West 119th Street Gatehouse, LPC designation photograph (1999-12)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP2051_1999-12_012 1"
+    },
+    {
+     "caption": "Old Croton Aqueduct Walk, LPC designation photograph (2024-04-09)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP2673_2024-04-09_002 1"
+    },
+    {
+     "caption": "Old Croton Aqueduct Walk, LPC designation photograph (2024-04-09)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP2673_2024-04-09_015 1"
+    }
+   ],
+   "imageCredits": [
+    "Flickr, photo ID 51131300001 (photographer unverified)",
+    "NYC Landmarks Preservation Commission"
+   ]
+  },
+  {
+   "id": "street-plan",
+   "short": "Street",
+   "name": "Street Plan of New Amsterdam and Colonial New York",
+   "lpcName": "Street Plan of New Amsterdam and Colonial New York",
+   "borough": "Manhattan",
+   "address": "Lower Manhattan: Beaver, Bridge, Broad, Pearl, Stone, Wall, Whitehall, William Streets and more",
+   "latitude": 40.7053123,
+   "longitude": -74.0119996,
+   "zoom": 15.2,
+   "category": "Individual Landmark",
+   "date": null,
+   "designationInfo": {
+    "lp": "LP-01235",
+    "designated": "1983-06-14"
+   },
+   "card": {
+    "w": 777,
+    "h": 571,
+    "photo": {
+     "src": "img/t-street.webp"
+    },
+    "hist": {
+     "src": "img/t-street-h.webp",
+     "box": [
+      -23,
+      -25,
+      840,
+      617
+     ],
+     "op": 0.75
+    },
+    "alt": "Map overlay of Lower Manhattan's colonial street grid"
+   },
+   "color": "#df8e54",
+   "photos": [
+    {
+     "caption": "Aerial view of Lower Manhattan",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "Screenshot 2026-10-26 at 4.50.08 PM 1"
+    },
+    {
+     "caption": "The Castello Plan: New Amsterdam in 1660",
+     "credit": "After Jacques Cortelyou (1660), via New Amsterdam History Center",
+     "verified": true,
+     "file": "Castelloplan 2",
+     "url": "https://newamsterdamhistorycenter.org/fat-event/cartographic-visions-of-new-netherland-new-amsterdam-depictions-of-resources-and-peoples/?ed=1554840000&sd=1554834600"
+    },
+    {
+     "caption": "15 Broad Street, August 2017",
+     "credit": "Wikimedia Commons",
+     "verified": true,
+     "file": "15_Broad_Street_August_2017_02 1",
+     "url": "https://commons.wikimedia.org/wiki/File:15_Broad_Street_August_2017_02.jpg"
+    },
+    {
+     "caption": "Plan of the City of New-York and its environs to Greenwich…, surveyed in the winter, 1775 (John Montresor; engraved by R. Andrews)",
+     "credit": "The New York Public Library, Wallach Division of Art, Prints and Photographs, Eno Collection",
+     "verified": true,
+     "file": "BRM4404-Montresor-City-of-New-York-1775_lowres-scaled-1-1565x2048 1",
+     "url": "https://digitalcollections.nypl.org/items/318b6390-c5f0-012f-ff67-58d385a7bc34?canvasIndex=0"
+    },
+    {
+     "caption": "Preserved remnants of 17th-century New York, Lower Manhattan",
+     "credit": "Atlas Obscura (user photo)",
+     "verified": true,
+     "file": "image 20",
+     "url": "https://www.atlasobscura.com/places/preserved-remnants-of-17th-century-new-york"
+    },
+    {
+     "caption": "Street Plan of New Amsterdam and Colonial New York",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 17"
+    }
+   ],
+   "imageCredits": [
+    "After Jacques Cortelyou (1660); image host unverified",
+    "Map by John Montresor (1775); image host unverified",
+    "Source needed"
+   ],
+   "pageImages": {
+    "Castelloplan 2": {
+     "caption": "The Castello Plan: New Amsterdam in 1660",
+     "credit": "After Jacques Cortelyou (1660), via New Amsterdam History Center",
+     "url": "https://newamsterdamhistorycenter.org/fat-event/cartographic-visions-of-new-netherland-new-amsterdam-depictions-of-resources-and-peoples/?ed=1554840000&sd=1554834600",
+     "bg": false
+    },
+    "image 20": {
+     "caption": "Preserved remnants of 17th-century New York, Lower Manhattan",
+     "credit": "Atlas Obscura (user photo)",
+     "url": "https://www.atlasobscura.com/places/preserved-remnants-of-17th-century-new-york",
+     "bg": false
+    },
+    "image 34": {
+     "caption": "17th-century Dutch fur traders bartering with Indigenous Americans",
+     "credit": "Vermont Wildlife Patrol",
+     "url": "https://vtwildlife.org/an-indigenous-perspective-on-the-fur-trade-and-trapping/",
+     "bg": false
+    },
+    "image 35": {
+     "caption": "Massacre of Indians at Pavonia, 1643 (engraving, 1859, from Mary L. Booth’s History of the City of New York)",
+     "credit": "New York Public Library, via David J. Goodwin",
+     "url": "https://davidjgoodwin.com/2015/06/05/the-pavonia-massacre/",
+     "bg": false
+    },
+    "image 36": {
+     "caption": "Plan of the City of New York (historic map)",
+     "credit": "The Bowery Boys",
+     "url": "https://www.boweryboyshistory.com/tag/battery-park",
+     "bg": false
+    },
+    "image 40": {
+     "caption": "A Plan of the City of New York from an Actual Survey made by James Lyne (William Bradford, 1731; Joseph Laing reprint, late 19th c.)",
+     "credit": "George Glazer Gallery",
+     "url": "https://www.georgeglazer.com/wpmain/product/map-new-york-city-bradford-lyne-1728-laing-antique-print-new-york-late-19th-century/",
+     "bg": false
+    },
+    "image 41": {
+     "caption": "Aerial View of Lower Manhattan, David A. Fox Studios",
+     "credit": "University of Wisconsin–Milwaukee Libraries",
+     "url": "https://collections.lib.uwm.edu/digital/collection/agdm/id/6194/",
+     "bg": false
+    },
+    "15_Broad_Street_August_2017_02 1": {
+     "caption": "15 Broad Street, August 2017",
+     "credit": "Wikimedia Commons",
+     "url": "https://commons.wikimedia.org/wiki/File:15_Broad_Street_August_2017_02.jpg",
+     "bg": false
+    },
+    "BRM4404-Montresor-City-of-New-York-1775_lowres-scaled-1-1565x2048 1": {
+     "caption": "Plan of the City of New-York and its environs to Greenwich…, surveyed in the winter, 1775 (John Montresor; engraved by R. Andrews)",
+     "credit": "The New York Public Library, Wallach Division of Art, Prints and Photographs, Eno Collection",
+     "url": "https://digitalcollections.nypl.org/items/318b6390-c5f0-012f-ff67-58d385a7bc34?canvasIndex=0",
+     "bg": false
+    }
+   }
+  },
+  {
+   "id": "dry-dock",
+   "short": "Dock",
+   "name": "Dry Dock No. 1",
+   "lpcName": "Dry Dock No. 1",
+   "borough": "Brooklyn",
+   "address": "Brooklyn Navy Yard, Dock Street at the foot of Third Street",
+   "latitude": 40.7022575,
+   "longitude": -73.9727668,
+   "zoom": 16,
+   "category": "Individual Landmark",
+   "date": null,
+   "designationInfo": {
+    "lp": "LP-00895",
+    "designated": "1975-09-23"
+   },
+   "card": {
+    "w": 771,
+    "h": 771,
+    "photo": {
+     "src": "img/t-dock.webp"
+    },
+    "hist": {
+     "src": "img/t-dock-h.webp",
+     "crop": [
+      -29.17,
+      0,
+      150,
+      100
+     ],
+     "op": 0.78
+    },
+    "alt": "Granite steps of Dry Dock No. 1"
+   },
+   "color": "#75aac3",
+   "photos": [
+    {
+     "caption": "Dry Dock No. 1",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "Dry_dock-navy-yard-bklyn 1"
+    },
+    {
+     "caption": "Dry Dock No. 1, LPC designation photograph (1975-06-20)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP0895_1975-06-20_007 1"
+    },
+    {
+     "caption": "Dry Dock No. 1",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "Image-11 1"
+    },
+    {
+     "caption": "Dry Dock No. 1, LPC designation photograph (1975-06-20)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP0895_1975-06-20_018 1"
+    },
+    {
+     "caption": "U.S. Coast Guard cutter under repair in Dry Dock 1",
+     "credit": "Turnstile Tours",
+     "verified": true,
+     "file": "USCG-Cutter-in-DD1 1"
+    },
+    {
+     "caption": "Dry Dock No. 1, LPC designation photograph (1975-06-20)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP0895_1975-06-20_017 1"
+    }
+   ],
+   "imageCredits": [
+    "NYC Landmarks Preservation Commission",
+    "Source needed",
+    "Turnstile Tours"
+   ]
+  },
+  {
+   "id": "opera-house",
+   "short": "Opera",
+   "name": "Bronx Opera House",
+   "lpcName": "Bronx Opera House",
+   "borough": "Bronx",
+   "address": "436-442 East 149th Street",
+   "latitude": 40.8149404,
+   "longitude": -73.9161497,
+   "zoom": 16.5,
+   "category": "Individual Landmark",
+   "date": null,
+   "designationInfo": {
+    "lp": "LP-02667",
+    "designated": "2023-06-13"
+   },
+   "card": {
+    "w": 732,
+    "h": 598,
+    "photo": {
+     "src": "img/t-opera.webp"
+    },
+    "hist": {
+     "src": "img/t-opera-h.webp",
+     "box": [
+      0,
+      -4,
+      741,
+      614
+     ],
+     "crop": [
+      -82.78,
+      -61.74,
+      250.93,
+      210.18
+     ],
+     "op": 0.86
+    },
+    "alt": "Facade of the Bronx Opera House"
+   },
+   "color": "#e1c05c",
+   "photos": [
+    {
+     "caption": "Bronx Opera House",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 89"
+    },
+    {
+     "caption": "Bronx Opera House",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 86"
+    },
+    {
+     "caption": "Bronx Opera House",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 90"
+    },
+    {
+     "caption": "Bronx Opera House",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 88"
+    },
+    {
+     "caption": "Bronx Opera House",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 84"
+    },
+    {
+     "caption": "Bronx Opera House",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 85"
+    }
+   ],
+   "imageCredits": [
+    "Source needed"
+   ]
+  },
+  {
+   "id": "friends",
+   "short": "Friends",
+   "name": "Friends Meeting House",
+   "lpcName": "Friends Meeting House",
+   "borough": "Queens",
+   "address": "137-16 Northern Boulevard, Flushing",
+   "latitude": 40.7628029,
+   "longitude": -73.8301599,
+   "zoom": 16.5,
+   "category": "Individual Landmark",
+   "date": null,
+   "designationInfo": {
+    "lp": "LP-00141",
+    "designated": "1970-08-18"
+   },
+   "card": {
+    "w": 783,
+    "h": 587,
+    "photo": {
+     "src": "img/t-friends.webp"
+    },
+    "hist": {
+     "src": "img/t-friends-h.webp",
+     "crop": [
+      -68.68,
+      -59.44,
+      237.16,
+      218.47
+     ],
+     "op": 0.86
+    },
+    "alt": "Shingled Friends Meeting House in Flushing"
+   },
+   "color": "#abd6a9",
+   "photos": [
+    {
+     "caption": "Friends Meeting House",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 53"
+    },
+    {
+     "caption": "Friends Meeting House",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 54"
+    },
+    {
+     "caption": "Flushing Meeting House, historic postcard",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "Flushing-Meetinghouse-postcard_1200_800 1"
+    },
+    {
+     "caption": "Friends Meeting House, LPC designation photograph (1963)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP0141_1963_001 1"
+    },
+    {
+     "caption": "Friends Meeting House",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 55"
+    },
+    {
+     "caption": "Friends Meeting House",
+     "credit": "Photo by Noel Sutherland, New York Landmarks Conservancy",
+     "verified": true,
+     "file": "NYLMC-_5050_-FRIENDS-MEETING-HOUSE-99_photo-by-Noel-Sutherland 1"
+    }
+   ],
+   "imageCredits": [
+    "NYC Landmarks Preservation Commission",
+    "Photo by Noel Sutherland, New York Landmarks Conservancy",
+    "Source needed"
+   ],
+   "pageImages": {
+    "image 56": {
+     "caption": "Thomas Rowlandson, Quakers Meeting, from Ackermann’s Repository, 1809",
+     "credit": "© Smithsonian Institution, via Friends Journal",
+     "url": "https://www.friendsjournal.org/when-quakers-were-the-karens/",
+     "bg": true
+    },
+    "image 57": {
+     "caption": "The Flushing Remonstrance, 1657",
+     "credit": "Bowne House Historical Society",
+     "url": "https://www.bownehouse.org/profiles-of-the-flushing-charter-signers",
+     "bg": false
+    },
+    "image 58": {
+     "caption": "View in Flushing, Long Island, with the Friends Meeting House",
+     "credit": "Library of Congress, Historic American Buildings Survey (HABS NY-0659)",
+     "url": "https://www.loc.gov/pictures/item/ny0659.photos.122356p/",
+     "bg": false
+    },
+    "download (4) 1": {
+     "caption": "Friends Meeting House, interior",
+     "credit": "NYC Municipal Archives",
+     "url": "https://nycrecords.access.preservica.com/?s=friends+meeting+house",
+     "bg": false
+    },
+    "download (5) 1": {
+     "caption": "Friends Meeting House, exterior",
+     "credit": "NYC Municipal Archives",
+     "url": "https://nycrecords.access.preservica.com/?s=friends+meeting+house",
+     "bg": false
+    }
+   }
+  },
+  {
+   "id": "bowery-mission",
+   "short": "Bowery",
+   "name": "The Bowery Mission",
+   "lpcName": "Bowery Mission",
+   "borough": "Manhattan",
+   "address": "227 Bowery",
+   "latitude": 40.7219734,
+   "longitude": -73.9928424,
+   "zoom": 16.8,
+   "category": "Individual Landmark",
+   "date": null,
+   "designationInfo": {
+    "lp": "LP-02494",
+    "designated": "2012-06-26"
+   },
+   "card": {
+    "w": 454,
+    "h": 682,
+    "photo": {
+     "src": "img/t-bowery.webp"
+    },
+    "hist": {
+     "src": "img/t-bowery-h.webp",
+     "crop": [
+      -94.43,
+      -1.83,
+      264.56,
+      121.99
+     ],
+     "op": 0.86
+    },
+    "alt": "Facade of the Bowery Mission"
+   },
+   "color": "#c15f50",
+   "photos": [
+    {
+     "caption": "The Bowery Mission, LPC designation photograph (2012-06-04)",
+     "credit": "NYC Landmarks Preservation Commission",
+     "verified": true,
+     "file": "LP2494_2012-06-04_004 1"
+    },
+    {
+     "caption": "The Bowery Mission",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 68"
+    },
+    {
+     "caption": "The Bowery Mission",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 69"
+    },
+    {
+     "caption": "The Bowery Mission",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 66"
+    },
+    {
+     "caption": "The Bowery Mission",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 71"
+    },
+    {
+     "caption": "The Bowery Mission",
+     "credit": "Source needed",
+     "verified": false,
+     "file": "image 72"
+    }
+   ],
+   "imageCredits": [
+    "NYC Landmarks Preservation Commission",
+    "Source needed"
+   ]
+  }
+ ]
+}
