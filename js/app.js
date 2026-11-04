@@ -250,12 +250,11 @@
   function initImgs(box, l) {
     const P = l.pageImages || {}, page = box.firstElementChild, z = innerWidth / 1728;
     const R = el => { const r = el.getBoundingClientRect(), o = page.getBoundingClientRect(); return { x: (r.left - o.left) / z, y: (r.top - o.top) / z, w: r.width / z, h: r.height / z }; };
-    const hit = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+    const U = (a, b) => { const x = Math.min(a.x, b.x), y = Math.min(a.y, b.y); return { x, y, w: Math.max(a.x + a.w, b.x + b.w) - x, h: Math.max(a.y + a.h, b.y + b.h) - y }; };
+    const hit = (a, b, m = 6) => a.x < b.x + b.w + m && b.x < a.x + a.w + m && a.y < b.y + b.h + m && b.y < a.y + a.h + m;
     const vis = el => el.getBoundingClientRect().width > 4 && getComputedStyle(el).opacity !== '0';
-    // obstacles: text blocks, foreground photos, carousel, expandable panel
-    const obst = [...page.querySelectorAll('p, .exp, .carousel, [data-name]')].filter(el => vis(el) && !el.closest('.carousel .strip') && (el.tagName === 'P' || el.matches('.exp,.carousel') || (P[el.dataset.name] && !P[el.dataset.name].bg) || /^(image|LP|download|oysters|stone)/i.test(el.dataset.name || '') && !el.querySelector('p'))).map(R).filter(r => r.w < 1700);
-    // decorative connector lines (svg vectors) count as obstacles too
-    page.querySelectorAll('img[src$=".svg"]').forEach(i => { const r = R(i); if (r.w < 1700 && r.h < 1200 && r.w > 2) obst.push(r); });
+    // 1. find every body photo and the area it really covers (container + image, which can spill out)
+    const photos = [];
     page.querySelectorAll('[data-name]').forEach(el => {
       if (el.closest('.carousel') || el.closest('.sticky') || el.matches('.carousel') || el.closest('.exp')) return;
       const im = el.querySelector(':scope > img, :scope > div > img');
@@ -263,19 +262,43 @@
       const p = P[el.dataset.name] || autoCap(el.dataset.name, l);
       el.querySelectorAll('img').forEach(i => i.alt = p.caption);
       if (p.bg) return;
-      const r = R(el), H = 78, G = 12;
-      const tries = [{ x: r.x, y: r.y + r.h + G, w: r.w, h: H }, { x: r.x, y: r.y - H - G, w: r.w, h: H }, { x: r.x + r.w + 16, y: r.y + r.h - H * 1.6, w: 300, h: H * 1.6 }, { x: r.x - 316, y: r.y + r.h - H * 1.6, w: 300, h: H * 1.6 }];
-      const spot = tries.find(t => t.x >= 20 && t.x + t.w <= 1708 && !obst.some(o => o !== r && hit(t, o) && !(o.x === r.x && o.y === r.y)));
+      let r = R(el); el.querySelectorAll('img').forEach(i => { const q = R(i), c = R(el); if (q.w < 1400) r = U(r, { x: Math.max(q.x, c.x - 40), y: Math.max(q.y, c.y - 40), w: Math.min(q.w, c.w + 80), h: Math.min(q.h, c.h + 80) }); });
+      photos.push({ el, p, r });
+    });
+    // 2. obstacles: text, every photo, the carousel and info panel, and the decorative connector lines
+    const hard = [...page.querySelectorAll('p, .exp, .carousel')].filter(el => vis(el) && !el.closest('.carousel .strip') && !el.closest('.exp-body')).map(R).filter(r => r.w < 1700)
+      .concat(photos.map(o => o.r));
+    const lines = [...page.querySelectorAll('img[src$=".svg"]')].map(R).filter(r => r.w < 1700 && r.h < 1200 && r.w > 2);
+    const measure = (html, w) => { const t = document.createElement('p'); t.className = 'img-cap placed'; t.style.cssText = `left:0;top:0;width:${w}px;visibility:hidden`; t.innerHTML = html; page.appendChild(t); const h = t.getBoundingClientRect().height / z; t.remove(); return h; };
+    // 3. put each caption in the nearest empty spot around its photo (shown on hover/focus only)
+    photos.forEach(({ el, p, r }) => {
+      const html = `${p.caption}<br><em>${p.credit}</em>`, G = 14, cands = [];
+      const wide = Math.max(260, Math.min(r.w, 560)), narrow = 300, hW = measure(html, wide), hN = measure(html, narrow);
+      for (let d = 0; d <= 240; d += 24) {
+        for (const x of [r.x, r.x + (r.w - wide) / 2, r.x + r.w - wide]) {
+          cands.push({ x, y: r.y + r.h + G + d, w: wide, h: hW });            // below
+          cands.push({ x, y: r.y - hW - G - d, w: wide, h: hW });             // above
+        }
+        for (const y of [r.y + r.h - hN, r.y + (r.h - hN) / 2, r.y]) {
+          cands.push({ x: r.x + r.w + G + d, y, w: narrow, h: hN });          // right
+          cands.push({ x: r.x - narrow - G - d, y, w: narrow, h: hN });       // left
+        }
+      }
+      const inPage = t => t.x >= 20 && t.x + t.w <= 1708 && t.y >= 0;
+      const dist = t => Math.hypot(Math.max(0, r.x - (t.x + t.w), t.x - (r.x + r.w)), Math.max(0, r.y - (t.y + t.h), t.y - (r.y + r.h)));
+      const pick = obs => cands.filter(t => inPage(t) && !obs.some(o => hit(t, o))).sort((a, b) => dist(a) - dist(b))[0];
+      const spot = pick(hard.concat(lines)) || pick(hard) || cands[0];
       const cap = document.createElement('p');
-      cap.className = 'img-cap'; cap.innerHTML = `${p.caption}<br><em>${p.credit}</em>`;
+      cap.className = 'img-cap placed'; cap.innerHTML = html;
+      Object.assign(cap.style, { left: spot.x + 'px', top: spot.y + 'px', width: spot.w + 'px' });
+      page.appendChild(cap); hard.push(spot);
       el.classList.add('cap-img'); el.tabIndex = 0; el.setAttribute('aria-describedby', cap.id = 'cap-' + Math.random().toString(36).slice(2, 8));
-      if (spot) { cap.classList.add('placed'); Object.assign(cap.style, { left: spot.x + 'px', top: spot.y + 'px', width: spot.w + 'px' }); page.appendChild(cap); obst.push(spot); }
-      else { el.classList.add('cap-host'); el.appendChild(cap); }   // no free space beside it: reveal over the photo
       const on = v => () => cap.classList.toggle('show', v);
       el.addEventListener('mouseenter', on(true)); el.addEventListener('mouseleave', on(false));
       el.addEventListener('focus', on(true)); el.addEventListener('blur', on(false));
     });
   }
+
   function autoCap(name, l) {
     const m = /^LP(\d{4})_([\d-]+)_/.exec(name || '');
     if (m) return { caption: `${l.name}, LPC designation photograph (${m[2]})`, credit: 'NYC Landmarks Preservation Commission' };
