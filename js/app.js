@@ -16,7 +16,14 @@
     r.startsWith('map/') ? 'map' : byId[r] ? 'map/' + r : '';
   const go = r => { const h = r ? '#' + r : ''; if (location.hash === h || (!r && !location.hash)) return render(); location.hash = h || '#'; };
 
-  const setNav = el => document.documentElement.style.setProperty('--nav', (el && el.dataset.nav) || '#93a07f');
+  const setNav = (el, l) => { const st = document.documentElement.style; st.setProperty('--nav', (el && el.dataset.nav) || '#93a07f'); st.setProperty('--ink', (l && l.ink) || '#203712'); };
+  // nav icons inline so their circles can take each landmark's ink colour
+  document.querySelectorAll('.nb img[src$=".svg"]').forEach(async im => {
+    if (im.closest('.home')) return;
+    const t = await fetch(im.getAttribute('src')).then(r => r.text());
+    im.insertAdjacentHTML('afterend', t.replace(/fill="#203712"/g, 'class="nb-fill"').replace(/<svg /, '<svg aria-hidden="true" '));
+    im.remove();
+  });
   function show(id) {
     if (id !== 'v-detail' && id !== 'v-info') setNav(null);
     document.querySelectorAll('.view').forEach(v => v.classList.toggle('on', v.id === id));
@@ -35,7 +42,7 @@
       const id = r.slice(4), back = from && byId[from];
       if (!isMap(from) && !back) await veil(true, 500);
       if (back) await veil(true, 700);
-      show('v-map'); initMap(); map.resize();
+      show('v-map'); initMap(); map.resize(); showTip();
       if (back) {                                   // returning from the past: rise out of the site
         const l = byId[from]; map.jumpTo({ center: [l.longitude, l.latitude], zoom: l.zoom + 2.4, pitch: 60, bearing: -25 });
       }
@@ -57,7 +64,7 @@
       if (r === 'info') {
         show('v-info'); const box = $('#infoBox');
         if (!box.dataset.ok) { box.innerHTML = await fetch('pages/info.html').then(r => r.text()); box.dataset.ok = 1; }
-        setNav(box.firstElementChild); renderSources(); scrollTo(0, 0);
+        setNav(box.firstElementChild, l); renderSources(); scrollTo(0, 0);
       } else { show('v-start'); if (r !== 'intro') scrollTo(0, 0); }
       await veil(false, 700);
     }
@@ -115,6 +122,16 @@
     camera({ center: c.center.toArray ? c.center.toArray() : [c.center.lng, c.center.lat], zoom: c.zoom, offset: [0, 0] });
   }
 
+  /* ---------- First-visit map instructions ---------- */
+  function showTip() {
+    const t = $('#tip'); if (t.dataset.done) return;
+    let seen = false; try { seen = sessionStorage.getItem('ih-tip') === '1'; } catch (e) {}
+    t.dataset.done = 1; if (seen) return;
+    t.hidden = false;
+    const close = () => { t.hidden = true; try { sessionStorage.setItem('ih-tip', '1'); } catch (e) {} };
+    t.querySelector('button').onclick = close;
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); }, { once: true });
+  }
   /* ---------- Travel card ---------- */
   const imgLayer = (src, crop, fit, alt = '') => crop
     ? `<img src="${src}" alt="${alt}" style="left:${crop[0]}%;top:${crop[1]}%;width:${crop[2]}%;height:${crop[3]}%">`
@@ -128,10 +145,11 @@
   }
   function renderCard(l) {
     const c = l.card, el = $('#card');
-    const top = 133 + (1117 - 133 - c.h) / 2;
+    const avail = innerHeight / (innerWidth / 1728) - 133, k = Math.min(1, (avail - 80) / c.h);
+    const top = 133 + (avail - c.h * k) / 2;
     const hist = c.hist ? (c.hist.box ? layer(c.hist) : `<div class="ly" style="inset:0">${imgLayer(c.hist.src, c.hist.crop, c.hist.fit)}</div>`) : '';
     el.className = 'card z' + (c.border ? ' border' : '');
-    el.style.cssText = `top:${top}px;width:${c.w}px;height:${c.h}px`;
+    el.style.cssText = `top:${top}px;width:${c.w}px;height:${c.h}px;--k:${k}`;
     el.setAttribute('role', 'link'); el.tabIndex = 0;
     el.setAttribute('aria-label', `Travel to ${l.name}`);
     el.innerHTML =
@@ -152,15 +170,18 @@
     if (box.dataset.id === l.id) return;
     box.innerHTML = cache[l.id] || (cache[l.id] = await fetch(`pages/${l.id}.html`).then(r => r.ok ? r.text() : `<div class="pad"><h1>${l.name}</h1></div>`));
     box.dataset.id = l.id;
-    setNav(box.firstElementChild);
+    setNav(box.firstElementChild, l);
     box.querySelectorAll('.carousel').forEach(c => initCarousel(c, l));
     box.querySelectorAll('.exp').forEach(b => initExp(b, l));
+    initSticky(box.firstElementChild);
     initImgs(box, l);
   }
   function initCarousel(c, l) {
     const strip = c.querySelector('.strip'), frames = [...strip.children];
     const px = (el, k) => parseFloat(getComputedStyle(el)[k]) || 0, s = px(c, 'width') / 7185, step = px(frames[1], 'left') - px(frames[0], 'left');
-    c.style.setProperty('--ab', 48 * s + 'px'); c.style.setProperty('--at', 376 * s + 'px'); c.style.setProperty('--an', 1115 * s + 'px');
+    const fl = 48 * s, fw = px(frames[0], 'width') || 1067 * s, ab = 48 * s, gap = 30 * s;   // arrows sit 30px clear of the photo edges
+    c.style.setProperty('--ab', ab + 'px'); c.style.setProperty('--at', 376 * s + 'px');
+    c.style.setProperty('--ap', fl - gap - ab + 'px'); c.style.setProperty('--an', fl + fw + gap + 'px');
     c.style.setProperty('--cl', 0); c.style.setProperty('--ct', 843 * s + 'px'); c.style.setProperty('--cw', 1163 * s + 'px');
     const caps = (l.photos || []), cap = c.querySelector('.car-cap'), prev = c.querySelector('.prev'), next = c.querySelector('.next');
     frames.forEach((f, k) => { const im = f.querySelector('img'); if (im) im.alt = (caps[k] && caps[k].caption) || `${l.name}, photo ${k + 1} of ${frames.length}`; });
@@ -175,6 +196,34 @@
     c.tabIndex = 0; c.onkeydown = e => { if (e.key === 'ArrowLeft') set(i - 1); if (e.key === 'ArrowRight') set(i + 1); };
     set(0);
   }
+  // Figma "sticky" background sections: each image (and its opaque backing box) pins to the top while the
+  // next section's image scrolls over it; text stays above all of them.
+  function initSticky(page) {
+    const H = parseFloat(page.style.height) || page.offsetHeight;
+    // Figma emits these tops relative to the whole page: top-[calc(A%+Bpx)] or top-[Npx]
+    const topOf = el => { const c = el.className || '', m = /top-\[calc\(([\d.]+)%([+-][\d.]+)px\)\]/.exec(c), n = /(?:^|\s)top-\[(-?[\d.]+)px\]/.exec(c);
+      return m ? H * m[1] / 100 + +m[2] : n ? +n[1] : /(?:^|\s)top-0/.test(c) ? 0 : null; };
+    page.querySelectorAll('.sticky').forEach(st => {
+      if (st.dataset.ok) return; st.dataset.ok = 1;
+      // Figma instances sometimes drop the frame width (absolute + left only => 0px wide): restore full width
+      for (let e = st.parentElement; e && e !== page; e = e.parentElement)
+        if (!e.offsetWidth && getComputedStyle(e).display !== 'contents') e.style.width = '1730px';
+      if (getComputedStyle(st).display !== 'contents') {
+        if (!st.offsetHeight) {                                        // sized-less sticky layer: give it a viewport-high box
+          const par = st.parentElement, ph = parseFloat((/(?:^|\s)h-\[([\d.]+)px\]/.exec(par.className) || [])[1]) || 1117;
+          st.style.height = ph + 'px';
+          if (/(?:^|\s)inset-0/.test(par.className)) par.style.height = 'auto';   // let it travel the whole section
+          if (par.parentElement && /pointer-events-none/.test(par.parentElement.className)) par.parentElement.style.height = 'auto';
+        }
+        return;
+      }
+      const wrapY = topOf(st.parentElement) ?? 0;
+      const kids = [...st.children];
+      const hs = kids.map(k => parseFloat((/(?:^|\s)h-\[([\d.]+)px\]/.exec(k.className) || [])[1]) || 1117);
+      st.style.cssText += `;display:block;position:sticky;top:0;width:100%;height:${Math.max(...hs)}px`;
+      kids.forEach((k, i) => { const y = topOf(k); k.style.top = Math.max(0, (y ?? wrapY) - wrapY) + 'px'; k.style.bottom = 'auto'; k.style.height = hs[i] + 'px'; });
+    });
+  }
   // captions + credits for in-page photographs, placed in free space so they never overlap text or other images
   function initImgs(box, l) {
     const P = l.pageImages || {}, page = box.firstElementChild, z = innerWidth / 1728;
@@ -186,7 +235,10 @@
     // decorative connector lines (svg vectors) count as obstacles too
     page.querySelectorAll('img[src$=".svg"]').forEach(i => { const r = R(i); if (r.w < 1700 && r.h < 1200 && r.w > 2) obst.push(r); });
     page.querySelectorAll('[data-name]').forEach(el => {
-      const p = P[el.dataset.name]; if (!p || el.closest('.carousel')) return;
+      if (el.closest('.carousel') || el.closest('.sticky') || el.matches('.carousel')) return;
+      const im = el.querySelector(':scope > img, :scope > div > img');
+      if (!P[el.dataset.name] && !(im && /\.(webp|png|jpe?g)$/.test(im.getAttribute('src') || '') && R(el).w < 1300 && R(el).w > 60 && getComputedStyle(el).opacity !== '0' && !el.closest('[class*="opacity-"]'))) return;
+      const p = P[el.dataset.name] || autoCap(el.dataset.name, l);
       el.querySelectorAll('img').forEach(i => i.alt = p.caption);
       if (p.bg) return;
       const r = R(el), H = 78, G = 12;
@@ -201,6 +253,11 @@
       el.addEventListener('mouseenter', on(true)); el.addEventListener('mouseleave', on(false));
       el.addEventListener('focus', on(true)); el.addEventListener('blur', on(false));
     });
+  }
+  function autoCap(name, l) {
+    const m = /^LP(\d{4})_([\d-]+)_/.exec(name || '');
+    if (m) return { caption: `${l.name}, LPC designation photograph (${m[2]})`, credit: 'NYC Landmarks Preservation Commission' };
+    return { caption: l.name, credit: 'Source needed' };
   }
   function renderSources() {
     const el = document.getElementById('imgSources'); if (!el || el.dataset.ok) return;

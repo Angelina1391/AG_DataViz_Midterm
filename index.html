@@ -47,6 +47,16 @@
 <main id="v-map" class="view">
   <div id="map" role="region" aria-label="Map of selected NYC landmarks"></div>
   <div id="card" class="card z" hidden></div>
+  <section id="tip" class="tip z" role="dialog" aria-labelledby="tipH" hidden>
+    <button type="button" aria-label="Close instructions">&times;</button>
+    <h2 id="tipH">Explore the map</h2>
+    <p>Click on a landmark to begin your journey.</p>
+    <ul>
+      <li>Drag to move around, scroll or use + / − to zoom.</li>
+      <li>Hover over a photo and choose <b>Travel Here</b> to step into its history.</li>
+      <li>Or pick a site from the Landmarks list.</li>
+    </ul>
+  </section>
   <section id="list" class="list z" aria-label="Landmark list">
     <h2>Landmarks</h2>
     <ol id="listItems"></ol>

@@ -131,7 +131,8 @@
      "url": "https://www.nytimes.com/2017/10/19/science/native-americans-shell-middens-maine.html",
      "bg": false
     }
-   }
+   },
+   "ink": "#203712"
   },
   {
    "id": "croton",
@@ -147,8 +148,7 @@
    "date": null,
    "designationInfo": {
     "lp": "LP-02673",
-    "designated": "2024",
-    "note": "Scenic landmark; not in the Individual Landmark Sites dataset. Coordinates approximate the walk's midpoint."
+    "designated": "2024"
    },
    "card": {
     "w": 777,
@@ -205,7 +205,8 @@
    "imageCredits": [
     "Flickr, photo ID 51131300001 (photographer unverified)",
     "NYC Landmarks Preservation Commission"
-   ]
+   ],
+   "ink": "#123337"
   },
   {
    "id": "street-plan",
@@ -344,7 +345,8 @@
      "url": "https://digitalcollections.nypl.org/items/318b6390-c5f0-012f-ff67-58d385a7bc34?canvasIndex=0",
      "bg": false
     }
-   }
+   },
+   "ink": "#4a2906"
   },
   {
    "id": "dry-dock",
@@ -423,7 +425,8 @@
     "NYC Landmarks Preservation Commission",
     "Source needed",
     "Turnstile Tours"
-   ]
+   ],
+   "ink": "#0b3248"
   },
   {
    "id": "opera-house",
@@ -506,7 +509,8 @@
    ],
    "imageCredits": [
     "Source needed"
-   ]
+   ],
+   "ink": "#58490b"
   },
   {
    "id": "friends",
@@ -617,7 +621,8 @@
      "url": "https://nycrecords.access.preservica.com/?s=friends+meeting+house",
      "bg": false
     }
-   }
+   },
+   "ink": "#064026"
   },
   {
    "id": "bowery-mission",
@@ -695,7 +700,8 @@
    "imageCredits": [
     "NYC Landmarks Preservation Commission",
     "Source needed"
-   ]
+   ],
+   "ink": "#661f12"
   }
  ]
 }

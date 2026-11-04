@@ -14,7 +14,7 @@ html,body{margin:0;background:var(--cream);color:var(--rust);font-family:Sunflow
 .nb{position:absolute;top:17px;width:88px;height:88px;padding:0;border:0;border-radius:50%;background:none;cursor:pointer;transition:transform .2s}
 .nb:hover{transform:scale(1.07)}
 .nb img{width:88px;height:88px;display:block}
-.nb.home{left:25px;top:22px;background:var(--forest);display:grid;place-items:center}
+.nb.home{left:25px;top:22px;background:var(--ink,var(--forest));transition:background .4s,transform .2s;display:grid;place-items:center}
 .nb.home img{width:40px;height:40px}
 .nb.back{left:1385px}.nb.map{left:1500px}.nb.info{left:1615px}
 
@@ -42,7 +42,6 @@ html,body{margin:0;background:var(--cream);color:var(--rust);font-family:Sunflow
 .mk:hover .pin,.mk:focus-visible .pin{transform:scale(1.18)}
 .mk.sel{z-index:2}
 .mk.sel .pin{transform:scale(1.45)}
-.mk.sel .body{stroke:#203712;stroke-width:3}
 .mk .lbl{position:absolute;left:50%;top:100%;transform:translateX(-50%);white-space:nowrap;font:600 15px Inter,system-ui,sans-serif;color:#3f3c34;text-shadow:0 0 3px #fff,0 0 3px #fff;pointer-events:none;opacity:0;transition:opacity .2s}
 .mk:hover .lbl,.mk:focus-visible .lbl,.mk.sel .lbl{opacity:1}
 .mk.sel .lbl{font-size:16px;top:calc(100% + 4px)}
@@ -78,11 +77,11 @@ html,body{margin:0;background:var(--cream);color:var(--rust);font-family:Sunflow
 .fg a{color:inherit}
 .fg i.cc{font-style:normal}
 .carousel .strip{transition:transform .6s cubic-bezier(.3,.7,.2,1)}
-.fg .car-btn{position:absolute;width:var(--ab);height:var(--ab);top:var(--at);display:grid;place-items:center;border-radius:50%;background:rgba(248,241,215,.85);color:#1e1e1e;cursor:pointer;transition:transform .2s,background .2s}
-.fg .car-btn:hover{transform:scale(1.1);background:#f8f1d7}
+.fg .car-btn{position:absolute;width:var(--ab);height:var(--ab);top:var(--at);display:grid;place-items:center;border-radius:50%;background:var(--ink,#203712);color:#f8f1d7;cursor:pointer;transition:transform .2s,background .2s,filter .2s}
+.fg .car-btn:hover{transform:scale(1.1);filter:brightness(1.25)}
 .car-btn svg{width:70%;height:70%}
-.car-btn.prev{left:0}.car-btn.next{left:var(--an)}
-.car-btn:disabled{opacity:.35;cursor:default;transform:none}
+.car-btn.prev{left:var(--ap)}.car-btn.next{left:var(--an)}
+.fg .car-btn:disabled{background:color-mix(in srgb,var(--ink,#203712) 28%,#f8f1d7);color:#fff;cursor:default;transform:none;filter:none}
 .car-cap{position:absolute;left:var(--cl);top:var(--ct);width:var(--cw);font:500 18px/1.4 Sunflower,sans-serif;color:#203712;text-align:center;opacity:0;transition:opacity .3s}
 .exp{cursor:pointer}
 .exp>div:nth-child(-n+2){transition:left .55s cubic-bezier(.3,.7,.2,1)}
@@ -94,7 +93,6 @@ html,body{margin:0;background:var(--cream);color:var(--rust);font-family:Sunflow
 .exp-body h3{margin:0 0 16px;font:400 44px "IM Fell Great Primer SC",serif}
 .exp-body dl{margin:0;display:grid;grid-template-columns:230px 1fr;gap:6px 18px}
 .exp-body dt{font-weight:700}.exp-body dd{margin:0}
-.fg .sticky:not([class*="h-["]){height:1117px}
 /* Info page: Sources + Credits (appended below Figma layout) */
 .info-extra{position:relative;padding:9020px 100px 160px;color:var(--rust);font:500 26px/1.6 Sunflower,sans-serif}
 .info-extra h2{margin:0 0 24px;text-align:center;font:400 48px/1.7 "IM Fell Great Primer SC",serif}
@@ -131,3 +129,17 @@ html,body{margin:0;background:var(--cream);color:var(--rust);font-family:Sunflow
 #detail.arrive{animation:arrive 2.2s cubic-bezier(.2,.7,.2,1) both}
 @keyframes arrive{0%{filter:sepia(1) blur(5px) brightness(1.08);transform:scale(1.035)}60%{filter:sepia(.35) blur(0)}100%{filter:none;transform:none}}
 @media (prefers-reduced-motion:reduce){#detail.arrive{animation:none}#warp{transition-duration:150ms!important}}
+
+.nb svg{width:88px;height:88px;display:block}
+.nb-fill{fill:var(--ink,#203712);transition:fill .4s}
+.card{transform-origin:0 50%}
+.card.show{transform:scale(var(--k,1))}
+.card.dive{transform:scale(calc(var(--k,1) * 1.08))}
+/* first-visit tip */
+.tip{position:absolute;left:28px;top:160px;width:430px;padding:22px 26px 20px;background:rgba(248,241,215,.96);border-radius:20px;box-shadow:19px 29px 36px rgba(0,0,0,.14);color:var(--forest);font:500 18px/1.5 Sunflower,sans-serif;animation:tipIn .6s ease both}
+.tip[hidden]{display:none}
+.tip h2{margin:0 0 6px;font:400 30px "IM Fell Great Primer SC",serif}
+.tip p{margin:0 0 6px}.tip ul{margin:4px 0 0;padding-left:20px;font-size:16px}
+.tip button{position:absolute;right:12px;top:10px;width:36px;height:36px;border:0;border-radius:50%;background:none;color:var(--forest);font-size:26px;line-height:1;cursor:pointer}
+.tip button:hover{background:rgba(32,55,18,.1)}
+@keyframes tipIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
