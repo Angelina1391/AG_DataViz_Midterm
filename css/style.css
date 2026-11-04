@@ -9,14 +9,14 @@ html,body{margin:0;background:var(--cream);color:var(--rust);font-family:Sunflow
 :focus-visible{outline:3px solid #f8f1d7;outline-offset:3px;box-shadow:0 0 0 6px var(--forest)}
 
 /* Nav */
-.nav{position:fixed;top:0;left:0;width:1728px;height:133px;z-index:20;background:var(--nav,var(--sage));transition:background .4s;box-shadow:19px 29px 36px rgba(0,0,0,.14)}
+.nav{position:fixed;top:0;left:0;width:1728px;height:106px;z-index:20;background:var(--nav,var(--sage));transition:background .4s;box-shadow:19px 29px 36px rgba(0,0,0,.14)}
 .nav::before{content:"";position:absolute;inset:0;background:url(../img/paper.webp) center/cover;mix-blend-mode:multiply;opacity:.7;border-radius:36px}
-.nb{position:absolute;top:17px;width:88px;height:88px;padding:0;border:0;border-radius:50%;background:none;cursor:pointer;transition:transform .2s}
+.nb{position:absolute;top:18px;width:70px;height:70px;padding:0;border:0;border-radius:50%;background:none;cursor:pointer;transition:transform .2s}
 .nb:hover{transform:scale(1.07)}
-.nb img{width:88px;height:88px;display:block}
-.nb.home{left:25px;top:22px;background:var(--ink,var(--forest));transition:background .4s,transform .2s;display:grid;place-items:center}
-.nb.home img{width:40px;height:40px}
-.nb.back{left:1385px}.nb.map{left:1500px}.nb.info{left:1615px}
+.nb img{width:70px;height:70px;display:block}
+.nb.home{left:20px;top:18px;background:var(--ink,var(--forest));transition:background .4s,transform .2s;display:grid;place-items:center}
+.nb.home img{width:32px;height:32px}
+.nb.back{left:1454px}.nb.map{left:1546px}.nb.info{left:1638px}
 
 /* Start */
 .start{position:relative;width:1728px;height:2964px;overflow:hidden;background:var(--cream)}
@@ -63,7 +63,7 @@ html,body{margin:0;background:var(--cream);color:var(--rust);font-family:Sunflow
 .list ol{margin:0;padding-left:22px}
 .list button{background:none;border:0;padding:3px 0;font:500 16px Sunflower,sans-serif;color:var(--rust);cursor:pointer;text-align:left}
 .list button:hover,.list button[aria-current]{text-decoration:underline}
-.mapboxgl-ctrl-top-right{top:calc(150px * var(--z))}
+.mapboxgl-ctrl-top-right{top:calc(122px * var(--z))}
 
 .pad{padding:180px 120px;width:1728px}
 .stub{font-size:28px}
@@ -88,7 +88,7 @@ html,body{margin:0;background:var(--cream);color:var(--rust);font-family:Sunflow
 .exp.open>div:nth-child(-n+2){left:0!important}
 .exp>.cc{position:absolute;left:calc(68.59% + 60px);top:50%;transform:translateY(-50%) rotate(180deg);color:#203712;transition:left .55s cubic-bezier(.3,.7,.2,1),transform .55s}
 .exp.open>.cc{left:24px;transform:translateY(-50%)}
-.exp-body{position:absolute;left:96px;top:56px;width:680px;font:500 28px/1.6 Sunflower,sans-serif;color:#203712;opacity:0;transition:opacity .3s .2s}
+.exp-body{position:absolute;left:96px;top:56px;width:680px;max-height:488px;overflow:hidden;font:500 28px/1.6 Sunflower,sans-serif;color:#203712;opacity:0;transition:opacity .3s .2s}
 .exp.open .exp-body{opacity:1}
 .exp-body h3{margin:0 0 16px;font:400 44px "IM Fell Great Primer SC",serif}
 .exp-body dl{margin:0;display:grid;grid-template-columns:230px 1fr;gap:6px 18px}
@@ -115,7 +115,7 @@ html,body{margin:0;background:var(--cream);color:var(--rust);font-family:Sunflow
 .img-cap.placed em{font-size:18px;opacity:.75}
 
 /* hover affordance on captioned photos */
-.fg .cap-img,.fg .carousel .strip>div{cursor:help}
+.fg .cap-img,.fg .carousel .strip>div{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='32' viewBox='0 0 26 32'%3E%3Cpath d='M2 2 L2 26 L8.5 20 L13 30 L17 28.2 L12.6 18.6 L21.5 18.6 Z' fill='%23fff' stroke='%23203712' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 2 2, pointer}
 .fg .cap-img{transition:filter .25s}
 .fg .cap-img:hover,.fg .cap-img:focus-visible{filter:brightness(1.06) drop-shadow(0 6px 14px rgba(0,0,0,.18))}
 .carousel .car-cap{opacity:0}
@@ -130,13 +130,13 @@ html,body{margin:0;background:var(--cream);color:var(--rust);font-family:Sunflow
 @keyframes arrive{0%{filter:sepia(1) blur(5px) brightness(1.08);transform:scale(1.035)}60%{filter:sepia(.35) blur(0)}100%{filter:none;transform:none}}
 @media (prefers-reduced-motion:reduce){#detail.arrive{animation:none}#warp{transition-duration:150ms!important}}
 
-.nb svg{width:88px;height:88px;display:block}
+.nb svg{width:70px;height:70px;display:block}
 .nb-fill{fill:var(--ink,#203712);transition:fill .4s}
 .card{transform-origin:0 50%}
 .card.show{transform:scale(var(--k,1))}
 .card.dive{transform:scale(calc(var(--k,1) * 1.08))}
 /* first-visit tip */
-.tip{position:absolute;left:28px;top:160px;width:430px;padding:22px 26px 20px;background:rgba(248,241,215,.96);border-radius:20px;box-shadow:19px 29px 36px rgba(0,0,0,.14);color:var(--forest);font:500 18px/1.5 Sunflower,sans-serif;animation:tipIn .6s ease both}
+.tip{position:absolute;left:28px;top:132px;width:430px;padding:22px 26px 20px;background:rgba(248,241,215,.96);border-radius:20px;box-shadow:19px 29px 36px rgba(0,0,0,.14);color:var(--forest);font:500 18px/1.5 Sunflower,sans-serif;animation:tipIn .6s ease both}
 .tip[hidden]{display:none}
 .tip h2{margin:0 0 6px;font:400 30px "IM Fell Great Primer SC",serif}
 .tip p{margin:0 0 6px}.tip ul{margin:4px 0 0;padding-left:20px;font-size:16px}

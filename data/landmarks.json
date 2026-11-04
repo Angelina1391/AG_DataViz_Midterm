@@ -145,7 +145,7 @@
    "longitude": -73.9095,
    "zoom": 15.5,
    "category": "Scenic Landmark",
-   "date": null,
+   "date": "1837–1842",
    "designationInfo": {
     "lp": "LP-02673",
     "designated": "2024"
@@ -206,7 +206,8 @@
     "Flickr, photo ID 51131300001 (photographer unverified)",
     "NYC Landmarks Preservation Commission"
    ],
-   "ink": "#123337"
+   "ink": "#123337",
+   "dateSource": "LPC designation report LP-02673 (not in building database)"
   },
   {
    "id": "street-plan",
@@ -248,7 +249,7 @@
      "caption": "Aerial view of Lower Manhattan",
      "credit": "Source needed",
      "verified": false,
-     "file": "Screenshot 2026-10-26 at 4.50.08 PM 1"
+     "file": "Lower Manhattan aerial"
     },
     {
      "caption": "The Castello Plan: New Amsterdam in 1660",
@@ -359,7 +360,7 @@
    "longitude": -73.9727668,
    "zoom": 16,
    "category": "Individual Landmark",
-   "date": null,
+   "date": "1840–1851",
    "designationInfo": {
     "lp": "LP-00895",
     "designated": "1975-09-23"
@@ -426,7 +427,8 @@
     "Source needed",
     "Turnstile Tours"
    ],
-   "ink": "#0b3248"
+   "ink": "#0b3248",
+   "dateSource": "LPC Individual Landmark & Historic District Building Database"
   },
   {
    "id": "opera-house",
@@ -439,7 +441,7 @@
    "longitude": -73.9161497,
    "zoom": 16.5,
    "category": "Individual Landmark",
-   "date": null,
+   "date": "1912–1913",
    "designationInfo": {
     "lp": "LP-02667",
     "designated": "2023-06-13"
@@ -510,7 +512,8 @@
    "imageCredits": [
     "Source needed"
    ],
-   "ink": "#58490b"
+   "ink": "#58490b",
+   "dateSource": "LPC Individual Landmark & Historic District Building Database"
   },
   {
    "id": "friends",
@@ -523,7 +526,7 @@
    "longitude": -73.8301599,
    "zoom": 16.5,
    "category": "Individual Landmark",
-   "date": null,
+   "date": "1694",
    "designationInfo": {
     "lp": "LP-00141",
     "designated": "1970-08-18"
@@ -622,7 +625,8 @@
      "bg": false
     }
    },
-   "ink": "#064026"
+   "ink": "#064026",
+   "dateSource": "LPC designation report LP-00141 (not in building database)"
   },
   {
    "id": "bowery-mission",
@@ -635,7 +639,7 @@
    "longitude": -73.9928424,
    "zoom": 16.8,
    "category": "Individual Landmark",
-   "date": null,
+   "date": "1876",
    "designationInfo": {
     "lp": "LP-02494",
     "designated": "2012-06-26"
@@ -701,7 +705,8 @@
     "NYC Landmarks Preservation Commission",
     "Source needed"
    ],
-   "ink": "#661f12"
+   "ink": "#661f12",
+   "dateSource": "LPC Individual Landmark & Historic District Building Database"
   }
  ]
 }

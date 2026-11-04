@@ -118,8 +118,10 @@
   function reset() {
     setSelected(null); hideCard(); clearTimeout(cardTimer);
     const b = new mapboxgl.LngLatBounds(); DATA.landmarks.forEach(l => b.extend([l.longitude, l.latitude]));
-    const z = innerWidth / 1728, c = map.cameraForBounds(b, { padding: { top: 220 * z, bottom: 60 * z, left: 80 * z, right: 420 * z } });
-    camera({ center: c.center.toArray ? c.center.toArray() : [c.center.lng, c.center.lat], zoom: c.zoom, offset: [0, 0] });
+    const z = innerWidth / 1728, pad = { top: 300 * z, bottom: 50 * z, left: 80 * z, right: 420 * z };   // keep the top pin clear of the nav bar
+    const c = map.cameraForBounds(b, { padding: pad });
+    // cameraForBounds centres on the bounds; shift by half the uneven padding so the pins sit in the open area
+    camera({ center: c.center.toArray ? c.center.toArray() : [c.center.lng, c.center.lat], zoom: c.zoom, offset: [(pad.left - pad.right) / 2, (pad.top - pad.bottom) / 2] });
   }
 
   /* ---------- First-visit map instructions ---------- */
@@ -145,8 +147,8 @@
   }
   function renderCard(l) {
     const c = l.card, el = $('#card');
-    const avail = innerHeight / (innerWidth / 1728) - 133, k = Math.min(1, (avail - 80) / c.h);
-    const top = 133 + (avail - c.h * k) / 2;
+    const avail = innerHeight / (innerWidth / 1728) - 106, k = Math.min(1, (avail - 80) / c.h);
+    const top = 106 + (avail - c.h * k) / 2;
     const hist = c.hist ? (c.hist.box ? layer(c.hist) : `<div class="ly" style="inset:0">${imgLayer(c.hist.src, c.hist.crop, c.hist.fit)}</div>`) : '';
     el.className = 'card z' + (c.border ? ' border' : '');
     el.style.cssText = `top:${top}px;width:${c.w}px;height:${c.h}px;--k:${k}`;
@@ -269,10 +271,14 @@
     el.dataset.ok = 1;
   }
   function initExp(b, l) {
-    const d = l.designationInfo || {}, rows = [['Borough', l.borough], ['Address', l.address], ['Type', l.category], ['LP number', d.lp], ['Designated', d.designated], ['Note', d.note]].filter(r => r[1]);
+    const d = l.designationInfo || {};
+    const mdy = v => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || ''); return m ? `${+m[2]}/${+m[3]}/${m[1]}` : v; };
+    const rows = [['Borough', l.borough], ['Address', l.address], ['Built', l.date], ['Type', l.category], ['LP number', d.lp], ['Designated', mdy(d.designated)]].filter(r => r[1]);
     const body = b.querySelector('.exp-body');
     body.innerHTML = `<h3>Designation</h3><dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>`;
     body.hidden = false;
+    // keep everything inside the panel: step the type down until it fits
+    for (let fs = 28; fs > 18 && body.scrollHeight > body.clientHeight + 1; fs -= 1) body.style.fontSize = fs + 'px';
     b.onclick = () => { const o = b.classList.toggle('open'); b.setAttribute('aria-expanded', o); };
   }
 
