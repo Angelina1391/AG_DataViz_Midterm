@@ -205,6 +205,17 @@
     // Figma emits these tops relative to the whole page: top-[calc(A%+Bpx)] or top-[Npx]
     const topOf = el => { const c = el.className || '', m = /top-\[calc\(([\d.]+)%([+-][\d.]+)px\)\]/.exec(c), n = /(?:^|\s)top-\[(-?[\d.]+)px\]/.exec(c);
       return m ? H * m[1] / 100 + +m[2] : n ? +n[1] : /(?:^|\s)top-0/.test(c) ? 0 : null; };
+    // background sections whose Figma instance lost its width (absolute + left only => 0px): restore it
+    page.querySelectorAll('[data-name$=" image"]').forEach(e => { if (!e.offsetWidth && getComputedStyle(e).display !== 'contents') e.style.width = '1730px'; });
+    // background photos load up front so they are ready when they slide into view
+    page.querySelectorAll('[data-name$=" image"] img, .sticky img').forEach(i => i.loading = 'eager');
+    // a background section with no sticky layer (e.g. Aakawaxung "archaic image") stretches its photo over the whole
+    // section; pin it like the others at one screen high so it is not blown up
+    page.querySelectorAll('[data-name$=" image"]').forEach(e => {
+      if (e.querySelector('.sticky') || e.closest('.sticky') || e.offsetHeight < 1500) return;
+      const c = e.firstElementChild; if (!c || !c.querySelector('img')) return;
+      Object.assign(c.style, { position: 'sticky', top: '0', bottom: 'auto', height: (parseFloat((/(?:^|\s)h-\[([\d.]+)px\]/.exec(e.getAttribute('data-h') || '') || [])[1]) || 1163) + 'px', width: '100%' });
+    });
     page.querySelectorAll('.sticky').forEach(st => {
       if (st.dataset.ok) return; st.dataset.ok = 1;
       // Figma instances sometimes drop the frame width (absolute + left only => 0px wide): restore full width
@@ -223,7 +234,16 @@
       const kids = [...st.children];
       const hs = kids.map(k => parseFloat((/(?:^|\s)h-\[([\d.]+)px\]/.exec(k.className) || [])[1]) || 1117);
       st.style.cssText += `;display:block;position:sticky;top:0;width:100%;height:${Math.max(...hs)}px`;
-      kids.forEach((k, i) => { const y = topOf(k); k.style.top = Math.max(0, (y ?? wrapY) - wrapY) + 'px'; k.style.bottom = 'auto'; k.style.height = hs[i] + 'px'; });
+      // Figma's left values are page-relative too: re-base them on the wrapper. Backing boxes cover the full
+      // width so nothing behind peeks through; wide photos are centred on the page.
+      const leftOf = el => +((/(?:^|\s)left-\[(-?[\d.]+)px\]/.exec(el.className) || [0, 0])[1]);
+      const wrapX = leftOf(st.parentElement);
+      kids.forEach((k, i) => {
+        const y = topOf(k); k.style.top = Math.max(0, (y ?? wrapY) - wrapY) + 'px'; k.style.bottom = 'auto'; k.style.height = hs[i] + 'px';
+        const w = parseFloat((/(?:^|\s)w-\[([\d.]+)px\]/.exec(k.className) || [])[1]) || 1728;
+        if (!k.querySelector('img')) { k.style.left = -wrapX + 'px'; k.style.width = '1730px'; }
+        else k.style.left = (w >= 1600 ? (1728 - w) / 2 : leftOf(k)) - wrapX + 'px';
+      });
     });
   }
   // captions + credits for in-page photographs, placed in free space so they never overlap text or other images
@@ -237,7 +257,7 @@
     // decorative connector lines (svg vectors) count as obstacles too
     page.querySelectorAll('img[src$=".svg"]').forEach(i => { const r = R(i); if (r.w < 1700 && r.h < 1200 && r.w > 2) obst.push(r); });
     page.querySelectorAll('[data-name]').forEach(el => {
-      if (el.closest('.carousel') || el.closest('.sticky') || el.matches('.carousel')) return;
+      if (el.closest('.carousel') || el.closest('.sticky') || el.matches('.carousel') || el.closest('.exp')) return;
       const im = el.querySelector(':scope > img, :scope > div > img');
       if (!P[el.dataset.name] && !(im && /\.(webp|png|jpe?g)$/.test(im.getAttribute('src') || '') && R(el).w < 1300 && R(el).w > 60 && getComputedStyle(el).opacity !== '0' && !el.closest('[class*="opacity-"]'))) return;
       const p = P[el.dataset.name] || autoCap(el.dataset.name, l);

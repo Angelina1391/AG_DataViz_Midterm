@@ -104,7 +104,7 @@ html,body{margin:0;background:var(--cream);color:var(--rust);font-family:Sunflow
 /* decorative Figma layers never block interaction */
 .fg *{pointer-events:none}
 .fg .carousel,.fg .carousel *,.fg .exp,.fg .exp *,.fg a,.fg .info-extra,.fg .info-extra *{pointer-events:auto}
-.fg .cap-host{pointer-events:auto;outline-offset:4px}
+.fg .cap-img,.fg .cap-host{pointer-events:auto;outline-offset:4px}
 .img-cap{position:absolute;left:0;right:0;bottom:0;margin:0;padding:14px 18px;background:rgba(32,55,18,.82);color:#f8f1d7;font:500 20px/1.4 Sunflower,sans-serif;opacity:0;transition:opacity .3s;pointer-events:none}
 .img-cap em{font-style:normal;opacity:.85;font-size:17px}
 .img-cap.show{opacity:1}
